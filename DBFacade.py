@@ -136,7 +136,8 @@ class DBFacade(object):
     def query_for_A(self, _name):
         first_try = self.get_record(_name, 'A')     #首先找A
         if first_try != []:
-            self.ret_list.append(first_try[0])           #有A，加入返回记录
+            for record in first_try:
+                self.ret_list.append(record)          #有A，加入返回记录
             return True                             #查询成功
         else:                                       #没有A，找CNAME
             second_try = self.get_record(_name, 'CNAME')    #second_try 找 CNAME 的 记录  
